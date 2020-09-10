@@ -14,7 +14,7 @@ function App() {
         <h1>COVID-19</h1>
         <formControl className="app__dropdown">
           <Select variant="outlined" value="Abc">
-            {countries.map((country) => {
+            {countries.map(country => {
               <MenuItem value={country}>{country}</MenuItem>
             })}
            
