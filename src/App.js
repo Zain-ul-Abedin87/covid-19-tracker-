@@ -18,15 +18,13 @@ function App() {
       await fetch("https://disease.sh/v3/covid-19/countries")
         .then((response) => response.json())
         .then((data) => {
-          const countryDetails = data.map((items) =>(
-            {
-              name:items.country,
-              value:items.countryInfo.ios3
-            }
-          ) 
-          
-          );
+          const countryDetails = data.map((items) => ({
+            name: items.country,
+            value: items.countryInfo.ios3,
+          }));
+          setcountries(countryDetails)
         });
+        getCountriesData()
     };
   }, []);
   return (
