@@ -3,11 +3,7 @@ import "./App.css";
 import { FormControl, Select, MenuItem } from "@material-ui/core";
 
 function App() {
-  const [countries, setcountries] = useState([
-    "Pakistan",
-    "Turki",
-    "Afganistan",
-  ]);
+  const [countries, setcountries] = useState([]);
   //  useEffect is mainly  use run a pice of code according to Ginven Condtaion
   useEffect(() => {
     // inside Code will b run once when the Componet loads not  agian
@@ -22,9 +18,9 @@ function App() {
             name: items.country,
             value: items.countryInfo.ios3,
           }));
-          setcountries(countryDetails)
+          setcountries(countryDetails);
         });
-        getCountriesData()
+      getCountriesData();
     };
   }, []);
   return (
@@ -34,7 +30,7 @@ function App() {
         <FormControl className="app__dropdown">
           <Select variant="outlined" value="Abc">
             {countries.map((item) => (
-              <MenuItem value={item}>{item}</MenuItem>
+              <MenuItem value={item.value}>{item.name}</MenuItem>
             ))}
           </Select>
         </FormControl>
