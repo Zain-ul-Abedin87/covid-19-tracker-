@@ -14,21 +14,22 @@ function App() {
       await fetch("https://disease.sh/v3/covid-19/countries")
         .then((response) => response.json())
         .then((data) => {
-          const countryDetails = data.map((items) => ({
+          const countries = data.map((items) => ({
             name: items.country,
             value: items.countryInfo.ios3,
           }));
-          setcountries(countryDetails);
+          // console.log(countryDetails)
+          setcountries(countries);
         });
+      };
       getCountriesData();
-    };
   }, []);
   return (
     <div className="app">
       <div className="app__header">
         <h1>COVID-19</h1>
         <FormControl className="app__dropdown">
-          <Select variant="outlined" value="Abc">
+          <Select variant="outlined">
             {countries.map((item) => (
               <MenuItem value={item.value}>{item.name}</MenuItem>
             ))}
