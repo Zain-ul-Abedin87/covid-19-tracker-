@@ -21,8 +21,8 @@ function App() {
           // console.log(countryDetails)
           setcountries(countries);
         });
-      };
-      getCountriesData();
+    };
+    getCountriesData();
   }, []);
   return (
     <div className="app">
@@ -30,6 +30,7 @@ function App() {
         <h1>COVID-19</h1>
         <FormControl className="app__dropdown">
           <Select variant="outlined">
+            <MenuItem >Wordwide</MenuItem>
             {countries.map((item) => (
               <MenuItem value={item.value}>{item.name}</MenuItem>
             ))}
