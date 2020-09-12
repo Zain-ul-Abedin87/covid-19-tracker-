@@ -4,6 +4,7 @@ import { FormControl, Select, MenuItem } from "@material-ui/core";
 
 function App() {
   const [countries, setcountries] = useState([]);
+  const [country,setCountry] = useState("wordWide")
   //  useEffect is mainly  use run a pice of code according to Ginven Condtaion
   useEffect(() => {
     // inside Code will b run once when the Componet loads not  agian
@@ -24,13 +25,21 @@ function App() {
     };
     getCountriesData();
   }, []);
+
+  const onCountryChange = async (event)=>{
+    const countryCode = event.target.value;
+    console.log(countryCode)
+  }
   return (
     <div className="app">
       <div className="app__header">
         <h1>COVID-19</h1>
         <FormControl className="app__dropdown">
-          <Select variant="outlined">
-            <MenuItem >Wordwide</MenuItem>
+          <Select variant="outlined"
+          value={country}
+          onChange={onCountryChange}
+          >
+            <MenuItem value="wordWide">Wordwide</MenuItem>
             {countries.map((item) => (
               <MenuItem value={item.value}>{item.name}</MenuItem>
             ))}
