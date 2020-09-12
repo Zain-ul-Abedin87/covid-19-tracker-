@@ -26,8 +26,8 @@ function App() {
     getCountriesData();
   }, []);
 
-  const onCountryChange = async (event)=>{
-    const countryCode = event.target.value;
+  const onCountryChange =  (event)=>{
+    const countryCode = event.target.value
     console.log(countryCode)
   }
   return (
