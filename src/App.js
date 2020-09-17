@@ -1,8 +1,14 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
-import { FormControl, Select, MenuItem } from "@material-ui/core";
+import {
+  FormControl,
+  Select,
+  MenuItem,
+  Card,
+  CardContent,
+} from "@material-ui/core";
 import InfoBox from "./Components/InfoBox";
-import Map from "./Components/Map"
+import Map from "./Components/Map";
 
 function App() {
   const [countries, setcountries] = useState([]);
@@ -36,25 +42,37 @@ function App() {
 
   return (
     <div className="app">
-      <div className="app__header">
-        <h1>COVID-19</h1>
-        <FormControl className="app__dropdown">
-          <Select variant="outlined" value={country} onChange={onCountryChange}>
-            <MenuItem value="wordWide">Wordwide</MenuItem>
-            {countries.map((item, i) => (
-              <MenuItem key={i} value={item.value}>
-                {item.name}
-              </MenuItem>
-            ))}
-          </Select>
-        </FormControl> 
+      <div className="app_left">
+        <div className="app__header">
+          <h1>COVID-19</h1>
+          <FormControl className="app__dropdown">
+            <Select
+              variant="outlined"
+              value={country}
+              onChange={onCountryChange}
+            >
+              <MenuItem value="wordWide">Wordwide</MenuItem>
+              {countries.map((item, i) => (
+                <MenuItem key={i} value={item.value}>
+                  {item.name}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+        </div>
+        <div className="app-status">
+          <InfoBox title="corona-cases" total={2000} cases={123} />
+          <InfoBox title="Recoverd " total={2000} cases={123} />
+          <InfoBox title="Details" total={2000} cases={123} />
+        </div>
+        <Map />
       </div>
-      <div className="App-status">
-        <InfoBox title="corona-cases" total={2000} cases={123} />
-        <InfoBox title="Recoverd " total={2000} cases={123} />
-        <InfoBox title="Details" total={2000} cases={123} />
-      </div>
-      <Map/>
+      <Card>
+        <CardContent>
+          <h1>new Cases</h1>
+          <h4>World Wide Cases</h4>
+        </CardContent>
+      </Card>
     </div>
   );
 }
