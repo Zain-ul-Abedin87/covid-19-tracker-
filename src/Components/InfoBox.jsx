@@ -12,7 +12,7 @@ function InfoBox({ title, cases, total }) {
         <Typography className="infoBox-total">{total} total</Typography>
       </CardContent>
     </Card>
-  );
+  ); 
 }
 
 export default InfoBox;
