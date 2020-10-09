@@ -1,29 +1,41 @@
-*{
-  margin:0;
+* {
+  margin: 0;
 }
-body{
+body {
   background-color: #f5f6f5;
 }
-.app{
+.app {
   display: flex;
   justify-content: space-evenly;
-  padding: 20px; 
+  padding: 20px;
 }
-.app__header{
+.app__header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
 }
-.app_left{
+.app_left {
   flex: 0.9;
 }
-.app-status{
+.app-status {
   display: flex;
   justify-content: space-between;
 }
-@media (max-width: 990px){
-  .app{
+.country_flag {
+  width: 5%;
+  height: 5%;
+  padding-left: 20px;
+  
+}
+.country-heading{
+  color: cadetblue;
+  font-family: cursive;
+  
+ }
+
+@media (max-width: 990px) {
+  .app {
     flex-direction: column;
   }
 }
