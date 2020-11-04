@@ -5,13 +5,14 @@ import {
   Select,
   MenuItem,
   Card,
-  CardContent,Table
+  CardContent,
 } from "@material-ui/core";
 import InfoBox from "./Components/InfoBox";
 import Map from "./Components/Map";
+// import Table from "./Components/Table";
 
 function App() {
-  const [countries, setcountries] = useState([]);
+  const [countries, setCountries] = useState([]);
   const [country, setCountry] = useState("wordWide");
   const [countryInfo, setcountryInfo] = useState({});
   const [tableData,setTableData] =useState([])
@@ -39,8 +40,9 @@ function App() {
             name: items.country,
             value: items.countryInfo.iso3,
           }));
+          setTableData(data)
           console.log(countries);
-          setcountries(countries);
+          setCountries(countries);
         });
     };
     getCountriesData();
@@ -123,7 +125,7 @@ function App() {
       <Card>
         <CardContent>
           <h3>Live Cases by Country</h3>
-          <Table/>
+          <Table countries={tableData}/>
           <h4>World Wide Cases</h4>
         </CardContent>
       </Card>
