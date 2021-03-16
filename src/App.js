@@ -9,23 +9,23 @@ import {
 } from "@material-ui/core";
 import InfoBox from "./Components/InfoBox";
 import Map from "./Components/Map";
-// import Table from "./Components/Table";
+import Table from "./Components/Table";
 
 function App() {
   const [countries, setCountries] = useState([]);
   const [country, setCountry] = useState("wordWide");
   const [countryInfo, setcountryInfo] = useState({});
-  const [tableData,setTableData] =useState([])
+  const [tableData, setTableData] = useState([]);
 
-   useEffect(()=>{
-     fetch ("https://disease.sh/v3/covid-19/all")
-     .then((response)=> response.json())
-     .then((data)=>{
-       setTableData(data)
-       setcountryInfo(data)
-     })
-   },[])
-  
+  useEffect(() => {
+    fetch("https://disease.sh/v3/covid-19/all")
+      .then((response) => response.json())
+      .then((data) => {
+        setTableData(data);
+        setcountryInfo(data);
+      });
+  }, []);
+
   //  useEffect is mainly  use run a pice of code according to Ginven Condtaion
   useEffect(() => {
     // inside Code will b run once when the Componet loads not  agian
@@ -40,8 +40,9 @@ function App() {
             name: items.country,
             value: items.countryInfo.iso3,
           }));
-          setTableData(data)
-          console.log(countries);
+          console.log(typeof data);
+          // console.log(typeof(countries));
+          setTableData(data);
           setCountries(countries);
         });
     };
@@ -65,14 +66,14 @@ function App() {
         setcountryInfo(data);
       });
   };
-  console.log(Object.values(countryInfo).map((item) => item.flag));
+  // console.log(Object.values(countryInfo).map((item) => item.flag));
 
   return (
     <div className="app">
       <div className="app_left">
         <div className="app__header">
           <h1 className="covid-heading">
-            Covid-19  Info About <span></span>
+            Covid-19 Info About <span></span>
             <span className="country-heading">
               {countryInfo.country}
               {Object.values(countryInfo).map(
@@ -125,7 +126,7 @@ function App() {
       <Card>
         <CardContent>
           <h3>Live Cases by Country</h3>
-          <Table countries={tableData}/>
+          <Table countries={tableData} />
           <h4>World Wide Cases</h4>
         </CardContent>
       </Card>
